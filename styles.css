@@ -119,3 +119,173 @@ html {
   padding-top: 0;
   padding-bottom: 8px;
 }
+.form-container form h3 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+.form-container form .box {
+  width: 100%;
+  border-radius: 0.5rem;
+  background-color: var(--light-bg);
+  padding: 1.2rem 1.4rem;
+  font-size: 1.8rem;
+  color: var(--black);
+  border: var(--border);
+  margin: 1rem 0;
+}
+
+.form-container form .input_text {
+  resize: none;
+  width: 100%;
+  height: 200px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  background-color: #333;
+}
+
+ul li {
+  display: inline;
+}
+
+ul li a {
+  text-decoration: none;
+  color: white;
+  padding: 14px 20px;
+  display: inline-block;
+}
+
+ul li a:hover {
+  background-color: #111;
+}
+
+/* Flexbox container to center the table */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Table styling */
+table {
+  width: 80%;
+  max-width: 1200px; /* To ensure it doesn’t stretch too wide */
+  border-collapse: collapse;
+  margin: 0 auto; /* Center the table horizontally */
+  font-size: 1.2em; /* Increase text size */
+}
+
+table th,
+table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: center;
+  word-wrap: break-word; /* Handle long words */
+  max-width: 200px; /* Set max width for columns to avoid overflow */
+}
+
+table th {
+  background-color: #333;
+  color: white;
+}
+
+/* Description column control */
+table td:nth-child(2) {
+  max-width: 300px; /* Limit the width of the description column */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Alternating row colors */
+table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Form elements styling */
+button,
+select {
+  padding: 8px 12px;
+  background-color: #333;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1em;
+}
+
+button:hover,
+select:hover {
+  background-color: #555;
+}
+
+/* Pagination styling */
+.pagination {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.pagination a {
+  color: #333;
+  padding: 8px 16px;
+  text-decoration: none;
+  border: 1px solid #ddd;
+  margin: 0 4px;
+  border-radius: 4px;
+}
+
+.pagination a:hover {
+  background-color: #ddd;
+}
+
+.pagination a.active {
+  background-color: #333;
+  color: white;
+  border: none;
+}
+
+/* Modal Background (hidden by default) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1000; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  background-color: rgba(0, 0, 0, 0.5); /* Dull background effect */
+  justify-content: center;
+  align-items: center;
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+/* Button Styling */
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  background-color: #333;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #555;
+}
