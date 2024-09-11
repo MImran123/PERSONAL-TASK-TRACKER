@@ -43,41 +43,42 @@ $result = $conn->query("SELECT id, title, description, completion_date, status F
 
 <body>
   <?php include 'header.php'; ?>
-
-  <h1>Task List</h1>
-
-  <table>
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Completion Date</th>
-        <th>Status</th>
-        <th>Change Status</th>
-      </tr>
-    </thead>
-    <tbody>
-      <?php while ($row = $result->fetch_assoc()) { ?>
+  
+    <h1>Task List</h1>
+    <div class="container">
+    <table>
+      <thead>
         <tr>
-          <td><?php echo htmlspecialchars($row['title']); ?></td>
-          <td><?php echo htmlspecialchars($row['description']); ?></td>
-          <td><?php echo htmlspecialchars($row['completion_date']); ?></td>
-          <td><?php echo htmlspecialchars($row['status']); ?></td>
-          <td>
-            <form method="post" action="tasks_list.php?page=<?php echo $current_page; ?>">
-              <input type="hidden" name="task_id" value="<?php echo $row['id']; ?>">
-              <select name="status">
-                <option value="New" <?php if ($row['status'] == 'New') echo 'selected'; ?>>New</option>
-                <option value="In Progress" <?php if ($row['status'] == 'In Progress') echo 'selected'; ?>>In Progress</option>
-                <option value="Completed" <?php if ($row['status'] == 'Completed') echo 'selected'; ?>>Completed</option>
-              </select>
-              <button type="submit">Update</button>
-            </form>
-          </td>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Completion Date</th>
+          <th>Status</th>
+          <th>Change Status</th>
         </tr>
-      <?php } ?>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <?php while ($row = $result->fetch_assoc()) { ?>
+          <tr>
+            <td><?php echo htmlspecialchars($row['title']); ?></td>
+            <td><?php echo htmlspecialchars($row['description']); ?></td>
+            <td><?php echo htmlspecialchars($row['completion_date']); ?></td>
+            <td><?php echo htmlspecialchars($row['status']); ?></td>
+            <td>
+              <form method="post" action="tasks_list.php?page=<?php echo $current_page; ?>">
+                <input type="hidden" name="task_id" value="<?php echo $row['id']; ?>">
+                <select name="status">
+                  <option value="New" <?php if ($row['status'] == 'New') echo 'selected'; ?>>New</option>
+                  <option value="In Progress" <?php if ($row['status'] == 'In Progress') echo 'selected'; ?>>In Progress</option>
+                  <option value="Completed" <?php if ($row['status'] == 'Completed') echo 'selected'; ?>>Completed</option>
+                </select>
+                <button type="submit">Update</button>
+              </form>
+            </td>
+          </tr>
+        <?php } ?>
+      </tbody>
+    </table>
+  </div>
 
   <!-- Pagination Links -->
   <div class="pagination">

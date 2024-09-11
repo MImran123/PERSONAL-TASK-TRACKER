@@ -32,19 +32,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Add Task</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
   <?php include 'header.php' ?>
 
-  <form method="post" action="add_task.php">
-    <input type="text" name="title" placeholder="Task Title" required>
-    <textarea name="description" placeholder="Task Description"></textarea>
-    <input type="datetime-local" name="completion_date" required>
-    <button type="submit">Add Task</button>
-  </form>
+  <div class="form-container">
+    <form method="post" action="add_task.php">
+      <h3>Add Task</h3>
+      <input type="text" name="title" placeholder="Task Title" required class="box">
+      <textarea name="description" placeholder="Task Description" class="box input_text" ></textarea>
+      <input type="datetime-local" name="completion_date" required class="box">
+      <button type="submit" class="btn">Add Task</button>
+    </form>
+  </div>
 </body>
 
 </html>
