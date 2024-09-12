@@ -1,8 +1,9 @@
-<ul>
+<ul class="header">
     <li><a href="add_task.php">Add Task</a></li>
     <li><a href="tasks_list.php">Tasks List</a></li>
     <li><a href="#" id="logout-link">Logout</a></li>
 </ul>
+
 
 <!-- Modal HTML -->
 <div id="logoutModal" class="modal">

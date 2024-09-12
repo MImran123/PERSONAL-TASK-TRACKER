@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   if (empty($username) || empty($password)) {
     $errorMessage['empty_fields'] = 'Username and Password are required!';
   } else {
-    $conn = new mysqli('localhost', 'root', '', 'task_tracker');
+    include 'config.php';
 
     // Check for connection errors
     if ($conn->connect_error) {
@@ -59,14 +59,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
   <div class="form-container">
     <form method="post" action="login.php">
-      <h3>Login</h3>
+      <h3>Login Now</h3>
       <input type="text" name="username" placeholder="Username" required class="box">
       <input type="password" name="password" placeholder="Password" required class="box">
 
       <!-- Display error messages -->
-      <p class="error"><?php echo (!empty($errorMessage['empty_fields']) ? $errorMessage['empty_fields'] : '') ?></p>
+
       <p class="error"><?php echo (!empty($errorMessage['user_not_found']) ? $errorMessage['user_not_found'] : '') ?></p>
-      <p class="error"><?php echo (!empty($errorMessage['invalid_password']) ? $errorMessage['invalid_password'] : '') ?></p>
+
 
       <input type="submit" name="submit" value="Login" class="btn">
       <p>Don't have an account? <a href="register.php">Register now</a></p>

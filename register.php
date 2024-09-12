@@ -1,5 +1,7 @@
 <?php
 
+include 'config.php';
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -10,8 +12,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $errorMessage['password_not_match'] = 'Passwords do not match!';
     } else {
         $hashedPassword = md5($password); // Hash the password using MD5
-
-        $conn = new mysqli('localhost', 'root', '', 'task_tracker');
 
         // Check for connection errors
         if ($conn->connect_error) {

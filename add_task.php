@@ -1,4 +1,5 @@
 <?php
+include 'config.php';
 session_start();
 if (!isset($_SESSION['user_id'])) {
   header("Location: login.php");
@@ -11,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $completion_date = $_POST['completion_date'];
   $user_id = $_SESSION['user_id'];
 
-  $conn = new mysqli('localhost', 'root', '', 'task_tracker');
+
   $stmt = $conn->prepare("INSERT INTO tasks (user_id, title, description, completion_date) VALUES (?, ?, ?, ?)");
   $stmt->bind_param('isss', $user_id, $title, $description, $completion_date);
 
@@ -39,15 +40,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
   <?php include 'header.php' ?>
 
-  <div class="form-container">
+  <div class="form-container2">
     <form method="post" action="add_task.php">
       <h3>Add Task</h3>
       <input type="text" name="title" placeholder="Task Title" required class="box">
-      <textarea name="description" placeholder="Task Description" class="box input_text" ></textarea>
-      <input type="datetime-local" name="completion_date" required class="box">
+      <textarea name="description" placeholder="Task Description" class="box input_text"></textarea>
+      <input type="date" name="completion_date" required class="box">
       <button type="submit" class="btn">Add Task</button>
     </form>
   </div>
+
+  <?php include 'footer.php' ?>
 </body>
 
 </html>

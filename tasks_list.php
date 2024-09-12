@@ -1,11 +1,11 @@
 <?php
+include 'config.php';
+
 session_start();
 if (!isset($_SESSION['user_id'])) {
   header("Location: login.php");
   exit();
 }
-
-$conn = new mysqli('localhost', 'root', '', 'task_tracker');
 
 // Handle status update
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -43,9 +43,9 @@ $result = $conn->query("SELECT id, title, description, completion_date, status F
 
 <body>
   <?php include 'header.php'; ?>
-  
-    <h1>Task List</h1>
-    <div class="container">
+
+  <h1 class="heading">Task List</h1>
+  <div class="container">
     <table>
       <thead>
         <tr>
@@ -98,6 +98,8 @@ $result = $conn->query("SELECT id, title, description, completion_date, status F
   </div>
 
   <?php $conn->close(); ?>
+
+  <?php include 'footer.php'; ?>
 </body>
 
 </html>
