@@ -12,14 +12,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $completion_date = $_POST['completion_date'];
   $user_id = $_SESSION['user_id'];
 
-
   $stmt = $conn->prepare("INSERT INTO tasks (user_id, title, description, completion_date) VALUES (?, ?, ?, ?)");
   $stmt->bind_param('isss', $user_id, $title, $description, $completion_date);
 
   if ($stmt->execute()) {
-    echo "Task added successfully!";
+    echo "<script>alert('Task added successfully!');</script>";
   } else {
-    echo "Error: " . $stmt->error;
+    echo "<script>alert('Error: " . $stmt->error . "');</script>";
   }
 
   $stmt->close();
