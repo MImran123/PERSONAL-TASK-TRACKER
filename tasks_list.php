@@ -42,6 +42,8 @@ $result = $conn->query("SELECT id, title, description, completion_date, status F
 </head>
 
 <body>
+
+
   <?php include 'header.php'; ?>
 
   <h1 class="heading">Task List</h1>
@@ -100,6 +102,3 @@ $result = $conn->query("SELECT id, title, description, completion_date, status F
   <?php $conn->close(); ?>
 
   <?php include 'footer.php'; ?>
-</body>
-
-</html>
