@@ -44,12 +44,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       <h3>Add Task</h3>
       <input type="text" name="title" placeholder="Task Title" required class="box">
       <textarea name="description" placeholder="Task Description" class="box input_text"></textarea>
-      <input type="date" name="completion_date" required class="box">
+      <input type="datetime-local" name="completion_date" required class="box">
       <button type="submit" class="btn">Add Task</button>
     </form>
   </div>
 
   <?php include 'footer.php' ?>
+  <script src="script.js"></script>
 </body>
 
 </html>

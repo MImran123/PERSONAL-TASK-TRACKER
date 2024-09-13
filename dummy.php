@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 include 'config.php';
 
 session_start();
@@ -39,7 +39,6 @@ $result = $conn->query("SELECT id, title, description, completion_date, status F
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Task List</title>
   <link rel="stylesheet" href="styles.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -67,19 +66,17 @@ $result = $conn->query("SELECT id, title, description, completion_date, status F
             <td><?php echo htmlspecialchars($row['title']); ?></td>
             <td><?php echo htmlspecialchars($row['description']); ?></td>
             <td><?php echo htmlspecialchars($formatted_date); ?></td>
-            <td class="status"><?php echo htmlspecialchars($row['status']); ?></td>
+            <td><?php echo htmlspecialchars($row['status']); ?></td>
             <td>
-              <form id="updateForm" data-task-id="<?php echo $row['id']; ?>">
+              <form method="post" action="tasks_list.php?page=<?php echo $current_page; ?>">
                 <input type="hidden" name="task_id" value="<?php echo $row['id']; ?>">
                 <select name="status">
                   <option value="New" <?php if ($row['status'] == 'New') echo 'selected'; ?>>New</option>
                   <option value="In Progress" <?php if ($row['status'] == 'In Progress') echo 'selected'; ?>>In Progress</option>
                   <option value="Completed" <?php if ($row['status'] == 'Completed') echo 'selected'; ?>>Completed</option>
                 </select>
+                <button type="submit">Update</button>
               </form>
-
-
-
             </td>
           </tr>
         <?php } ?>
@@ -108,7 +105,6 @@ $result = $conn->query("SELECT id, title, description, completion_date, status F
 
   <?php include 'footer.php'; ?>
 
-
 </body>
 
-</html>
+</html> -->

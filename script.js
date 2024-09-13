@@ -26,3 +26,28 @@ window.addEventListener("click", function (event) {
     logoutModal.style.display = "none";
   }
 });
+
+// Update task status when the 'Update Status' button is clicked using AJAX
+
+$(document).ready(function () {
+  $('select[name="status"]').on("change", function () {
+    var form = $(this).closest("form");
+    var taskId = form.data("task-id");
+    var status = $(this).val();
+
+    $.ajax({
+      url: "update_task.php",
+      type: "POST",
+      data: {
+        task_id: taskId,
+        status: status,
+      },
+      success: function (response) {
+        var data = JSON.parse(response);
+        if (data.success) {
+          alert("Task status updated successfully!");
+        }
+      },
+    });
+  });
+});
