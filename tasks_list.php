@@ -85,7 +85,7 @@ $result = $conn->query("SELECT id, title, description, completion_date, status F
   <!-- Pagination Links -->
   <div class="pagination">
     <?php if ($current_page > 1): ?>
-      <a href="tasks_list.php?page=<?php echo $current_page - 1; ?>">&laquo; Previous</a>
+      <a href="tasks_list.php?page=<?php echo $current_page - 1; ?>">; Previous</a>
     <?php endif; ?>
 
     <?php for ($i = 1; $i <= $total_pages; $i++): ?>
@@ -95,7 +95,7 @@ $result = $conn->query("SELECT id, title, description, completion_date, status F
     <?php endfor; ?>
 
     <?php if ($current_page < $total_pages): ?>
-      <a href="tasks_list.php?page=<?php echo $current_page + 1; ?>">Next &raquo;</a>
+      <a href="tasks_list.php?page=<?php echo $current_page + 1; ?>">Next ;</a>
     <?php endif; ?>
   </div>
 

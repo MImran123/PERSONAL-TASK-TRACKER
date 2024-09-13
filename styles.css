@@ -161,18 +161,12 @@ html {
   background-color: var(--purple);
 }
 
-/* .form-container form .error {
+.form-container form .error {
+  display: flex;
   color: red;
-  font-size: 0.9em;
-} */
-
-.form-container2 form .error {
-  color: red;
-  font-size: 1.3em;
-  text-align: left;
-  padding-top: 0;
-  padding-bottom: 8px;
+  font-size: 1.3rem;
 }
+
 .form-container2 form h3 {
   font-size: 3rem;
   margin-bottom: 1rem;
