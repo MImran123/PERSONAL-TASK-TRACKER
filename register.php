@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($password !== $confirm_password) {
         $errorMessage['password_not_match'] = 'Passwords do not match!';
     } else {
-        $hashedPassword = md5($password); // Hash the password using MD5
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT); // Hash the password using password_hash()
 
         // Check for connection errors
         if ($conn->connect_error) {
@@ -61,7 +61,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
     <div class="form-container">
-
         <form method="post" action="register.php">
             <h3>Register</h3>
             <input type="text" name="username" placeholder="Username" required class="box">

@@ -18,21 +18,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       die("Connection failed: " . $conn->connect_error);
     }
 
-    // Prepare statement to check the username
-    $stmt = $conn->prepare("SELECT id, password FROM users WHERE username = ?");
+    // Prepare statement to check the username and fetch role
+    $stmt = $conn->prepare("SELECT id, password, role FROM users WHERE username = ?");
     $stmt->bind_param('s', $username);
     $stmt->execute();
     $stmt->store_result();
-    $stmt->bind_result($user_id, $hashed_password);
+    $stmt->bind_result($user_id, $hashed_password, $role);
 
     // Check if user exists
     if ($stmt->num_rows > 0) {
       $stmt->fetch();
-      // Verify the password using md5 (matching register.php)
-      if (md5($password) === $hashed_password) {
+
+      // Verify the password using password_verify
+      if (password_verify($password, $hashed_password)) {
         $_SESSION['user_id'] = $user_id;
-        header("Location: add_task.php");
-        exit;
+
+        // Check user role and redirect accordingly
+        if ($role === 'admin') {
+          $_SESSION['admin'] = true; // Set session variable for admin
+          header("Location: statistics.php"); // Redirect admin to stats page
+        } else {
+          $_SESSION['admin'] = false;
+          header("Location: add_task.php"); // Redirect regular user to tasks page
+        }
+
+        exit; // End script after redirection
       } else {
         $errorMessage['invalid_password'] = 'Invalid password!';
       }
@@ -64,9 +74,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       <input type="password" name="password" placeholder="Password" required class="box">
 
       <!-- Display error messages -->
-
-      <p class="error"><?php echo (!empty($errorMessage['user_not_found']) ? $errorMessage['user_not_found'] : '') ?></p>
-
+      <p class="error">
+        <?php
+        echo (!empty($errorMessage['empty_fields']) ? $errorMessage['empty_fields'] : '');
+        echo (!empty($errorMessage['user_not_found']) ? $errorMessage['user_not_found'] : '');
+        echo (!empty($errorMessage['invalid_password']) ? $errorMessage['invalid_password'] : '');
+        ?>
+      </p>
 
       <input type="submit" name="submit" value="Login" class="btn">
       <p>Don't have an account? <a href="register.php">Register now</a></p>
