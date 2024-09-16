@@ -22,6 +22,9 @@
       <li>Task Status: Set task status as "New", "In Progress", or "Completed".</li>
       <li>Task List: View tasks in an organized list format with all relevant details.</li>
       <li>Individual Task Lists: Users can only view and manage their own tasks.</li>
+      <li>Admin Role: Admins can view all user tasks and access task statistics.</li>
+      <li>Task Statistics: Admins can view task statistics like total tasks, tasks by status, and average tasks per user.</li>
+      <li>Pagination: Tasks are displayed with pagination for easy navigation.</li>
     </ul>
   </div>
 
@@ -33,3 +36,6 @@
       <li>Database: MySQL</li>
     </ul>
   </div>
+
+</body>
+</html>
