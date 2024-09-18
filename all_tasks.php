@@ -54,16 +54,20 @@ $conn->close();
         </tr>
       </thead>
       <tbody>
-        <?php while ($task = $tasks_result->fetch_assoc()): ?>
+        <?php while ($task = $tasks_result->fetch_assoc()):
+          // Format created_at into 'F-d-Y h:i A' (e.g., September-18-2024 12:26 PM)
+          $formatted_date = date('F-d-Y h:i A', strtotime($task['created_at']));
+        ?>
           <tr>
             <td><?php echo htmlspecialchars($task['id']); ?></td>
             <td><?php echo htmlspecialchars($task['description']); ?></td>
             <td><?php echo htmlspecialchars($task['status']); ?></td>
-            <td><?php echo htmlspecialchars($task['created_at']); ?></td>
+            <td><?php echo $formatted_date; ?></td> <!-- Display formatted date -->
             <td><?php echo htmlspecialchars($task['username']); ?></td>
           </tr>
         <?php endwhile; ?>
       </tbody>
+
     </table>
   </div>
 

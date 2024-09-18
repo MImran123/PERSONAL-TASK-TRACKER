@@ -240,7 +240,9 @@ table td {
   text-align: center;
   word-wrap: break-word;
   max-width: 200px;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
+  font-weight: 400;
+  height: 5rem;
   font-weight: 400;
 }
 
@@ -374,7 +376,7 @@ button:hover {
   display: flex;
   justify-content: center;
   margin-top: 2rem;
-  font-size: 3rem;
+  font-size: 5rem;
 }
 
 /* statistics page */
@@ -409,4 +411,11 @@ button:hover {
   font-size: 2rem;
   border-radius: 0.5rem;
   border: var(--border);
+}
+
+.dashboard .title {
+  text-align: center;
+  font-size: xxx-large;
+  margin-bottom: revert;
+  margin-top: 2rem;
 }
