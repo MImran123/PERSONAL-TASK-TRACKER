@@ -2,10 +2,20 @@
 include 'config.php';
 
 session_start();
-if (!isset($_SESSION['admin']) || $_SESSION['admin'] !== true) {
+if (!isset($_SESSION['admin']) &&  !$_SESSION['user_id']) {
   header("Location: login.php");
   exit;
 }
+
+
+$where = "";
+
+if (!$_SESSION['admin']) {
+  $where  = " where tasks.user_id  =" . $_SESSION['user_id'];
+} else {
+  $where = " where 1";
+}
+
 
 // Pagination variables
 $tasks_per_page = 5; // Number of tasks to display per page
@@ -13,17 +23,24 @@ $current_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $offset = ($current_page - 1) * $tasks_per_page;
 
 // Retrieve tasks for all users with pagination
-$total_tasks_result = $conn->query("SELECT COUNT(*) AS total FROM tasks");
+$total_tasks_result = $conn->query("SELECT COUNT(*) AS total FROM tasks  $where");
 $total_tasks = $total_tasks_result->fetch_assoc()['total'];
 $total_pages = ceil($total_tasks / $tasks_per_page);
 
-$tasks_result = $conn->query("
-    SELECT tasks.id, tasks.description, tasks.status, tasks.created_at, users.username
+
+$query = "SELECT tasks.id, tasks.description, tasks.status, tasks.created_at, users.username
     FROM tasks
-    JOIN users ON tasks.user_id = users.id
+    JOIN users ON tasks.user_id = users.id $where
     ORDER BY tasks.created_at DESC
-    LIMIT $tasks_per_page OFFSET $offset
-");
+    LIMIT $tasks_per_page OFFSET $offset";
+
+$tasks_result = $conn->query($query);
+
+
+
+
+
+
 
 $conn->close();
 ?>
@@ -39,7 +56,7 @@ $conn->close();
 </head>
 
 <body>
-  <?php include 'admin_header.php'; ?>
+  <?php include 'header.php'; ?>
 
   <h1 class="heading">All Tasks</h1>
   <div class="container">

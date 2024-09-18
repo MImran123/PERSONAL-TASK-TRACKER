@@ -9,11 +9,13 @@
 </head>
 
 <body>
-  <ul class="header">
+<ul class="header">
     <li><a href="statistics.php">Statistics</a></li>
+    <li><a href="add_task.php">Add Task</a></li>
+    <li><a href="tasks_list.php">Tasks List</a></li>
     <li><a href="all_tasks.php">All Tasks</a></li>
     <li><a href="#" id="logout-link">Logout</a></li>
-  </ul>
+</ul>
 
   <!-- Modal HTML -->
   <div id="logoutModal" class="modal">
